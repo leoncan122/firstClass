@@ -15,11 +15,13 @@ app.get('/users/:id', function (req, res) {
 })
 //Post
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));//codificar body en un URL
+// app.use(express.urlencoded({ extended: true }));codificar body en un URL
 
-app.post('users/', function (req, res) {
-    let body = req.body
-    console.log(body)
+app.post('/users', function (req, res) {
+    let newUser = req.body
+    let newId = users.length 
+    newUser.id = newId
+    res.status(200).send(newUser.name, newUser.id)
 
 })
 app.listen(3000, () => console.log('Server is up and running'))
